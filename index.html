@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>For Meow — Just Being Honest 🐾</title>
+
+    <!-- =========================================================
+         FONTS
+    ========================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================================
+         MAIN STYLE
+    ========================================================== -->
+
+    <style>
+
+        /* ---------------------------------------------------------
+           RESET
+        --------------------------------------------------------- */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family: "Poppins", sans-serif;
+
+            color: #f5f2f6;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(174, 116, 184, 0.18),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 75%,
+                    rgba(76, 132, 180, 0.14),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #06070a,
+                    #101118,
+                    #090a0f
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        body::selection {
+            background: rgba(255,255,255,0.2);
+        }
+
+
+        /* ---------------------------------------------------------
+           BACKGROUND PARTICLES
+        --------------------------------------------------------- */
+
+        .background {
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 0;
+        }
+
+
+        .star {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            background: rgba(255,255,255,0.6);
+
+            border-radius: 50%;
+
+            animation:
+                floatStar
+                linear
+                infinite;
+        }
+
+
+        .star:nth-child(1) {
+            left: 10%;
+            top: 15%;
+            animation-duration: 9s;
+        }
+
+
+        .star:nth-child(2) {
+            left: 25%;
+            top: 70%;
+            animation-duration: 13s;
+        }
+
+
+        .star:nth-child(3) {
+            left: 42%;
+            top: 30%;
+            animation-duration: 11s;
+        }
+
+
+        .star:nth-child(4) {
+            left: 58%;
+            top: 80%;
+            animation-duration: 15s;
+        }
+
+
+        .star:nth-child(5) {
+            left: 75%;
+            top: 25%;
+            animation-duration: 10s;
+        }
+
+
+        .star:nth-child(6) {
+            left: 88%;
+            top: 60%;
+            animation-duration: 12s;
+        }
+
+
+        @keyframes floatStar {
+
+            0% {
+                transform:
+                    translateY(0)
+                    scale(0.8);
+
+                opacity: 0.15;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform:
+                    translateY(-100px)
+                    scale(1.2);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* ---------------------------------------------------------
+           PAGE
+        --------------------------------------------------------- */
+
+        .page {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(
+                900px,
+                calc(100% - 32px)
+            );
+
+            margin: auto;
+
+            padding:
+                60px
+                0
+                100px;
+        }
+
+
+        /* ---------------------------------------------------------
+           GLASS CARD
+        --------------------------------------------------------- */
+
+        .card {
+            position: relative;
+
+            padding: 42px;
+
+            margin-bottom: 28px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.065),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 30px 90px
+                rgba(0,0,0,0.35);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(255,255,255,0.17);
+        }
+
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            top: -100px;
+            right: -80px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,0.08),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* ---------------------------------------------------------
+           HERO
+        --------------------------------------------------------- */
+
+        .hero {
+            min-height: 520px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+
+        .cat {
+            font-size: 44px;
+
+            margin-bottom: 15px;
+
+            animation:
+                catFloat
+                3s
+                ease-in-out
+                infinite;
+        }
+
+
+        @keyframes catFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+
+        .eyebrow {
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            opacity: 0.42;
+
+            margin-bottom: 14px;
+        }
+
+
+        .hero h1 {
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(
+                    55px,
+                    10vw,
+                    100px
+                );
+
+            line-height: 0.95;
+
+            font-weight: 500;
+
+            margin-bottom: 22px;
+        }
+
+
+        .hero h1 span {
+            opacity: 0.55;
+        }
+
+
+        .hero-subtitle {
+            max-width: 600px;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+
+            color:
+                rgba(255,255,255,0.62);
+        }
+
+
+        .scroll-hint {
+            margin-top: 55px;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            opacity: 0.35;
+        }
+
+
+        /* ---------------------------------------------------------
+           SECTION TITLES
+        --------------------------------------------------------- */
+
+        .section-number {
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            opacity: 0.35;
+
+            margin-bottom: 9px;
+        }
+
+
+        h2 {
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(
+                    32px,
+                    5vw,
+                    48px
+                );
+
+            font-weight: 500;
+
+            margin-bottom: 17px;
+        }
+
+
+        h3 {
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 27px;
+
+            font-weight: 500;
+
+            margin-bottom: 10px;
+        }
+
+
+        p {
+            font-size: 14px;
+
+            line-height: 2;
+
+            color:
+                rgba(255,255,255,0.73);
+        }
+
+
+        /* ---------------------------------------------------------
+           HIGHLIGHT QUOTE
+        --------------------------------------------------------- */
+
+        .quote {
+            margin-top: 25px;
+
+            padding:
+                20px
+                22px;
+
+            border-left:
+                2px solid
+                rgba(255,255,255,0.25);
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 24px;
+
+            line-height: 1.5;
+
+            color:
+                rgba(255,255,255,0.90);
+        }
+
+
+        /* ---------------------------------------------------------
+           FEELING CARD
+        --------------------------------------------------------- */
+
+        .feeling-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap: 18px;
+
+            margin-top: 25px;
+        }
+
+
+        .mini-card {
+            padding: 24px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+        }
+
+
+        .mini-card p {
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ---------------------------------------------------------
+           TEASING BOX
+        --------------------------------------------------------- */
+
+        .tease {
+            margin-top: 24px;
+
+            padding: 18px 20px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            border:
+                1px dashed
+                rgba(255,255,255,0.13);
+
+            color:
+                rgba(255,255,255,0.70);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        .tease strong {
+            color:
+                rgba(255,255,255,0.92);
+        }
+
+
+        /* ---------------------------------------------------------
+           HIDE AND SEEK
+        --------------------------------------------------------- */
+
+        .hide-seek {
+            text-align: center;
+        }
+
+
+        .game-area {
+            margin-top: 30px;
+
+            min-height: 210px;
+
+            position: relative;
+
+            border-radius: 22px;
+
+            background:
+                rgba(0,0,0,0.20);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+
+        .seek-button {
+            position: absolute;
+
+            padding:
+                12px
+                21px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.14);
+
+            background:
+                rgba(255,255,255,0.06);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .seek-button:hover {
+            background:
+                rgba(255,255,255,0.12);
+        }
+
+
+        #seekMessage {
+            padding: 25px;
+
+            max-width: 550px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 25px;
+
+            line-height: 1.5;
+
+            opacity: 0;
+
+            transition:
+                opacity 0.5s ease;
+        }
+
+
+        #seekMessage.show {
+            opacity: 1;
+        }
+
+
+        /* ---------------------------------------------------------
+           BOARDS SECTION
+        --------------------------------------------------------- */
+
+        .boards {
+            position: relative;
+        }
+
+
+        .board-line {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+
+        .board-icon {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .board-text {
+            padding-top: 4px;
+        }
+
+
+        .board-text strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 14px;
+        }
+
+
+        .board-text span {
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            color:
+                rgba(255,255,255,0.55);
+        }
+
+
+        /* ---------------------------------------------------------
+           COMFORT SECTION
+        --------------------------------------------------------- */
+
+        .comfort {
+            padding: 34px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.055),
+                    rgba(255,255,255,0.02)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .comfort-line {
+            margin:
+                17px
+                0;
+
+            padding-left: 20px;
+
+            border-left:
+                1px solid
+                rgba(255,255,255,0.12);
+        }
+
+
+        /* ---------------------------------------------------------
+           LETTER
+        --------------------------------------------------------- */
+
+        .letter {
+            padding: 10px 5px;
+        }
+
+
+        .letter p {
+            margin-bottom: 19px;
+        }
+
+
+        .letter-opening {
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 28px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* ---------------------------------------------------------
+           DIVIDER
+        --------------------------------------------------------- */
+
+        .divider {
+            width: 80px;
+
+            height: 1px;
+
+            margin:
+                35px
+                auto;
+
+            background:
+                rgba(255,255,255,0.18);
+        }
+
+
+        /* ---------------------------------------------------------
+           LETTING GO
+        --------------------------------------------------------- */
+
+        .letting-go {
+            text-align: center;
+        }
+
+
+        .letting-go .big-line {
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    48px
+                );
+
+            line-height: 1.35;
+
+            margin:
+                25px
+                auto;
+
+            max-width: 700px;
+        }
+
+
+        .letting-go .small-line {
+            max-width: 600px;
+
+            margin:
+                auto;
+
+            font-size: 13px;
+
+            line-height: 1.9;
+
+            color:
+                rgba(255,255,255,0.58);
+        }
+
+
+        /* ---------------------------------------------------------
+           FINAL SECTION
+        --------------------------------------------------------- */
+
+        .final {
+            text-align: center;
+
+            padding:
+                65px
+                35px;
+        }
+
+
+        .final h2 {
+            margin-bottom: 25px;
+        }
+
+
+        .final-message {
+            max-width: 680px;
+
+            margin:
+                auto;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(
+                    23px,
+                    4vw,
+                    32px
+                );
+
+            line-height: 1.65;
+
+            color:
+                rgba(255,255,255,0.87);
+        }
+
+
+        .final-note {
+            max-width: 650px;
+
+            margin:
+                30px
+                auto
+                0;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+            color:
+                rgba(255,255,255,0.58);
+        }
+
+
+        .signature {
+            margin-top: 35px;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            opacity: 0.35;
+        }
+
+
+        /* ---------------------------------------------------------
+           REVEAL BUTTON
+        --------------------------------------------------------- */
+
+        .reveal-button {
+            display: block;
+
+            margin:
+                30px
+                auto
+                0;
+
+            padding:
+                13px
+                24px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.14);
+
+            background:
+                rgba(255,255,255,0.06);
+
+            color: white;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            cursor: pointer;
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .reveal-button:hover {
+            transform: translateY(-2px);
+
+            background:
+                rgba(255,255,255,0.11);
+        }
+
+
+        #hiddenNote {
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height 0.8s ease,
+                opacity 0.5s ease;
+
+            margin-top: 0;
+        }
+
+
+        #hiddenNote.visible {
+            max-height: 500px;
+
+            opacity: 1;
+
+            margin-top: 28px;
+        }
+
+
+        /* ---------------------------------------------------------
+           MOBILE
+        --------------------------------------------------------- */
+
+        @media (
+            max-width: 650px
+        ) {
+
+            .page {
+                width:
+                    calc(100% - 20px);
+
+                padding:
+                    25px
+                    0
+                    60px;
